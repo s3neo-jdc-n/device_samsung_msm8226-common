@@ -494,6 +494,11 @@ on boot
     write /proc/sys/net/core/rmem_max  8388608
     write /proc/sys/net/core/wmem_max  8388608
 
+    start netmgrd
+    start qmuxd
+    start rmt_storage
+    start rfs_access
+
 on charger
     wait /dev/block/platform/msm_sdcc.1/by-name/system
     mount ext4 /dev/block/platform/msm_sdcc.1/by-name/system /system ro barrier=1
@@ -552,10 +557,14 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     user camera
     group camera system inet input graphics
 
+service netmgrd /system/bin/netmgrd
+    class main
+    user root
+
 service qmuxd /system/bin/qmuxd
     class main
-    user radio
-    group radio audio bluetooth gps qcom_diag
+    user root
+    group root radio audio bluetooth gps qcom_diag diag
 
 service qseecomd /system/bin/qseecomd
     class core
@@ -564,17 +573,12 @@ service qseecomd /system/bin/qseecomd
 
 service rfs_access /system/bin/rfs_access
     class core
-    user system
+    user root
     group system net_raw
 
 service rmt_storage /system/bin/rmt_storage
     class core
     user root
-    disabled
-
-on property:ro.boot.emmc=true
-    start rfs_access
-    start rmt_storage
 
 # Limit to SoC reset (1) and independent SSR (3)
 on property:persist.sys.ssr.restart_level=1
