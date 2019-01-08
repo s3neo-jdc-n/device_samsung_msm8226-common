@@ -597,6 +597,7 @@ typedef struct {
 } RIL_Dial;
 
 typedef struct {
+    int cla;
     int command;    /* one of the commands listed for TS 27.007 +CRSM*/
     int fileid;     /* EF id */
     char *path;     /* "pathid" from TS 27.007 +CRSM command.
@@ -611,6 +612,7 @@ typedef struct {
 } RIL_SIM_IO_v5;
 
 typedef struct {
+    int cla;
     int command;    /* one of the commands listed for TS 27.007 +CRSM*/
     int fileid;     /* EF id */
     char *path;     /* "pathid" from TS 27.007 +CRSM command.
@@ -1236,7 +1238,7 @@ typedef struct {
                   * Range : 25 to 120
                   * INT_MAX: 0x7FFFFFFF denotes invalid value.
                   * Reference: 3GPP TS 25.123, section 9.1.1.1 */
-} RIL_TD_SCDMA_SignalStrength;
+} RIL_TD_SCDMA_SignalStrength_CAF;
 
 /* Deprecated, use RIL_SignalStrength_v6 */
 typedef struct {
@@ -1264,7 +1266,7 @@ typedef struct {
     RIL_CDMA_SignalStrength     CDMA_SignalStrength;
     RIL_EVDO_SignalStrength     EVDO_SignalStrength;
     RIL_LTE_SignalStrength_v8   LTE_SignalStrength;
-    RIL_TD_SCDMA_SignalStrength TD_SCDMA_SignalStrength;
+    RIL_TD_SCDMA_SignalStrength_CAF TD_SCDMA_SignalStrength;
 } RIL_SignalStrength_v10;
 
 typedef struct {
@@ -1378,7 +1380,7 @@ typedef struct {
 
 typedef struct {
   RIL_CellIdentityTdscdma cellIdentityTdscdma;
-  RIL_TD_SCDMA_SignalStrength signalStrengthTdscdma;
+  RIL_TD_SCDMA_SignalStrength_CAF signalStrengthTdscdma;
 } RIL_CellInfoTdscdma;
 
 // Must be the same as CellInfo.TYPE_XXX
@@ -4771,7 +4773,7 @@ typedef struct {
 #define RIL_REQUEST_IMS_SEND_SMS 113
 
 /**
- * RIL_REQUEST_SIM_TRANSMIT_APDU_BASIC
+ * RIL_REQUEST_SIM_TRANSMIT_BASIC
  *
  * Request APDU exchange on the basic channel. This command reflects TS 27.007
  * "generic SIM access" operation (+CSIM). The modem must ensure proper function
@@ -4788,7 +4790,7 @@ typedef struct {
  *  RADIO_NOT_AVAILABLE
  *  GENERIC_FAILURE
  */
-#define RIL_REQUEST_SIM_TRANSMIT_APDU_BASIC 114
+#define RIL_REQUEST_SIM_TRANSMIT_BASIC 114
 
 /**
  * RIL_REQUEST_SIM_OPEN_CHANNEL
@@ -4831,7 +4833,7 @@ typedef struct {
 #define RIL_REQUEST_SIM_CLOSE_CHANNEL 116
 
 /**
- * RIL_REQUEST_SIM_TRANSMIT_APDU_CHANNEL
+ * RIL_REQUEST_SIM_TRANSMIT_CHANNEL
  *
  * Exchange APDUs with a UICC over a previously opened logical channel. This
  * command reflects TS 27.007 "generic logical channel access" operation
@@ -4847,7 +4849,7 @@ typedef struct {
  *  RADIO_NOT_AVAILABLE
  *  GENERIC_FAILURE
  */
-#define RIL_REQUEST_SIM_TRANSMIT_APDU_CHANNEL 117
+#define RIL_REQUEST_SIM_TRANSMIT_CHANNEL 117
 
 /**
  * RIL_REQUEST_NV_READ_ITEM
