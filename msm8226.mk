@@ -57,6 +57,7 @@ PRODUCT_PACKAGES += \
     libxml2
 	
 # CM Camera
+    cmcamera
 
 # CRDA
 PRODUCT_PACKAGES += \
