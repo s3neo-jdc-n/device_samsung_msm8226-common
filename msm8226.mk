@@ -57,9 +57,11 @@ PRODUCT_PACKAGES += \
     libxml2
 	
 # CM Camera
+PRODUCT_PACKAGES += \
     cmcamera
 
 # GodlyTorch
+PRODUCT_PACKAGES += \
     godlytorch   
 # CRDA
 PRODUCT_PACKAGES += \
