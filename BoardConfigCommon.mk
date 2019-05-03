@@ -12,8 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Inherit from qcom-common
--include device/samsung/qcom-common/BoardConfigCommon.mk
+BOARD_VENDOR := samsung
+
+# Bootloader
+TARGET_NO_BOOTLOADER := true
+
+# Architecture
+TARGET_ARCH := arm
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_ARCH_VARIANT := armv7-a-neon
+
+# Graphics
+TARGET_USES_C2D_COMPOSITION := true
+TARGET_USES_ION := true
+# Qualcomm support
+BOARD_USES_QCOM_HARDWARE := true
+
+# Recovery
+TARGET_RECOVERY_DEVICE_DIRS += device/samsung/msm8226-common
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+BOARD_HAS_DOWNLOAD_MODE := true
 
 VENDOR_PATH := device/samsung/msm8226-common
 

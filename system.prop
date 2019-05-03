@@ -89,3 +89,9 @@ persist.timed.enable=true
 # Wi-Fi
 ro.disableWifiApFirmwareReload=true
 wifi.interface=wlan0
+
+# Import from Samsung QCOM Common
+debug.sf.hw=
+debug.mdpcomp.logs=0
+persist.hwc.mdpcomp.enable
+ro.telephony.call_ring.multiple
