@@ -59,6 +59,8 @@ PRODUCT_PACKAGES += \
 # CM Camera
     cmcamera
 
+# GodlyTorch
+    godlytorch   
 # CRDA
 PRODUCT_PACKAGES += \
     crda \
