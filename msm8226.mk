@@ -206,6 +206,3 @@ PRODUCT_PACKAGES += \
     libQWiFiSoftApCfg \
     libwcnss_qmi \
     wcnss_service
-
-# Inherit from qcom-common
-$(call inherit-product, device/samsung/qcom-common/qcom-common.mk)
